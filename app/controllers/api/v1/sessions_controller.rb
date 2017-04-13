@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
   def create
     user_password = session[:password]
-    user_email  = sessions[:email]
+    user_email  = session[:email]
     user = user_email.present? && User.find_by(email: user_email)
     if user.valid_password? user_password
       sign_in user, store: false
